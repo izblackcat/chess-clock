@@ -1,0 +1,243 @@
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;800&display=swap');
+
+:root {
+  --bg-dark: #121212;
+  --bg-panel: #1e1e1e;
+  --active-color: #4da6ff;
+  /* Soft Blue */
+  --text-primary: #ffffff;
+  --text-dim: #555555;
+  --danger: #ff5252;
+}
+
+body {
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  overflow: hidden;
+  /* Prevent scrolling */
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.timer-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5.5rem;
+  font-weight: 800;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  position: relative;
+}
+
+
+.timer-top {
+  transform: rotate(180deg);
+  background-color: var(--bg-panel);
+  color: var(--text-dim);
+  border-bottom: 2px solid #000;
+}
+
+.timer-bottom {
+  background-color: var(--bg-panel);
+  color: var(--text-dim);
+}
+
+.timer-active {
+  background-color: var(--active-color);
+  color: #000;
+  flex-grow: 1.2;
+}
+
+/* Low time warning (optional, nice touch) */
+.timer-low-time {
+  background-color: var(--danger) !important;
+  color: white !important;
+}
+
+.controls-bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  border-radius: 50px;
+  display: flex;
+  gap: 20px;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* The Settings Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: #222;
+  padding: 30px;
+  border-radius: 20px;
+  width: 80%;
+  max-width: 400px;
+  border: 1px solid #333;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--active-color);
+}
+
+.preset-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.preset-btn {
+  background: #333;
+  border: 1px solid #444;
+  color: white;
+  padding: 15px;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.preset-btn:hover {
+  background: var(--active-color);
+  color: black;
+  transform: translateY(-2px);
+}
+
+.close-btn {
+  width: 100%;
+  padding: 15px;
+  background: transparent;
+  border: 1px solid #555;
+  color: #aaa;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.app-container {
+  /* Add transition for smooth flipping */
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.flipped {
+  transform: rotate(180deg);
+}
+
+.modal-overlay {
+
+}
+
+.custom-time-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-group {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+
+.input-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.input-label {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.time-input {
+  background: #111;
+  border: 1px solid #444;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  text-align: center;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.time-input:focus {
+  border-color: var(--active-color);
+}
+
+.start-custom-btn {
+  background: var(--active-color);
+  color: black;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
